@@ -1,7 +1,4 @@
-<?php include "./inc/hedare.php";
-
-
-?>
+<?php include "./inc/hedare.php";?>
 
 
 
@@ -260,13 +257,7 @@ if ($result = $conn->query($query)) {
                                                 <a href="#" class="btn btn-add-to-cart">+ Add to Cart</a>
                                             </div>
 
-                                            <div class="product-meta">
-                                                <button type="button" data-toggle="modal" data-target="#quickView">
-                                                    <span data-toggle="tooltip" data-placement="left" title="Quick View"><i class="fa fa-compress"></i></span>
-                                                </button>
-                                                <a href="wishlist.html" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a>
-                                                <a href="compare.html" data-toggle="tooltip" data-placement="left" title="Compare"><i class="fa fa-tags"></i></a>
-                                            </div>
+                                         
                                         </div>
                                         <!-- Single Product Item -->
 

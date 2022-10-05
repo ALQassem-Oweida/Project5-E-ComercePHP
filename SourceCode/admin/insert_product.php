@@ -1,5 +1,4 @@
-<?php include 'inc/header.php';?>
-<?php include 'inc/sidebar.php';?>
+
 <?php include "../lib/Databaseconfig.php";?>
 
 
@@ -7,7 +6,7 @@
 
 <div class="grid_10 ">
             <div class="box round first grid mt-5">
-                <h2>Category List</h2>
+                <h2>Add a Product</h2>
                 <div class="block">
 					<table class="table">
 
@@ -24,13 +23,12 @@
 
 <h3 class="panel-title">
 
-<i class="fa fa-money fa-fw"></i> Insert Products</h3>
 
 </div><!-- panel-heading Ends -->
 
 <div class="panel-body"><!-- panel-body Starts -->
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="form-horizontal" method="post" enctype="multipart/form-data"><!-- form-horizontal Starts -->
+<form action="" class="form-horizontal" method="post" enctype="multipart/form-data"><!-- form-horizontal Starts -->
 
 
 
@@ -233,7 +231,7 @@ echo "<option value='$cat_id'>$cat_title</option>";
 
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if(isset($_POST['submit'])){
 
 $product_title = $_POST['product_title'];
 
@@ -259,7 +257,12 @@ $insert_product = "insert into proudcts (product_name,catID,img,price,descriptio
 $run_product = mysqli_query($conn,$insert_product);
 
 if($run_product){
-echo "<script>alert('Product has been inserted successfully')</script>";
+
+echo "<script>
+alert('Product has been inserted successfully');
+window.location.href='http://localhost/01%20Team%203/admin/dashboard.php?insert_product';
+</script>";
+
 
 }
 

@@ -1,5 +1,4 @@
-﻿<?php include 'inc/header.php';?>
-<?php include 'inc/sidebar.php';?>
+﻿
 <?php include "../lib/Databaseconfig.php";?>
 
 
@@ -44,13 +43,6 @@
                </div>
             </div>
         </div>
-<script type="text/javascript">
-	$(document).ready(function () {
-	    setupLeftMenu();
 
-	    $('.datatable').dataTable();
-	    setSidebarHeight();
-	});
-</script>
 
 

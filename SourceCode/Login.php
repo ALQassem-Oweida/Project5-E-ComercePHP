@@ -10,7 +10,7 @@ class SigninUser extends Dbconn {
    public $emailErr;
 
 
-   public function signInValidation($uname,$pass){
+   public function signInValidation($uname, $pass, $return_url){
 
 
 
@@ -47,11 +47,18 @@ class SigninUser extends Dbconn {
                     $_SESSION['lastname'] = $row['last_name'];
                     $_SESSION['userType'] = $row['user_type'];
                     $_SESSION['email'] = $row['user_email'];
-                    header("location:./index.php");
+                    $_SESSION['userlogin'] = true;
+                    if($return_url != null) {
+                        header("location:$return_url");
+                    }else  {
+                        header("location:./index.php");
+                    }
+                    
                 }
     
                else{
-                    echo "Logged in!<br>";
+                    $_SESSION['adminlogin'] = true;
+                    //echo "Logged in!<br>";
                     $_SESSION['id'] = $row['user_id'];
                     $_SESSION['firstname'] = $row['first_name'];
                     $_SESSION['lastname'] = $row['last_name'];

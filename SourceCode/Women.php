@@ -1,15 +1,13 @@
 <?php include "./inc/hedare.php";
 
+
 if (isset($_POST["add_item"])) {
     $ok = 1;
     if ($ok == 1) {
         if (isset($_SESSION['cart'])) {
             $items = array_column($_SESSION["cart"], 'product_id');
-          
+			header("refresh:0");
             if (in_array($_POST['add_to_cart_id'], $items)) {
-				
-                // header("location:store.php?id={$_GET['id']}");
-             
             } else {
                 $item_array = array(
                     'product_id' => $_POST['add_to_cart_id'],
@@ -20,7 +18,7 @@ if (isset($_POST["add_item"])) {
                    
                 );
                 $_SESSION["cart"][$_POST['add_to_cart_id'] ] = $item_array;
-                // header("location:store.php");
+				header("refresh:0");
       
             }
         } else {
@@ -34,16 +32,22 @@ if (isset($_POST["add_item"])) {
                
             );
             $_SESSION["cart"][$_POST['add_to_cart_id'] ] = $item_array;
-            // header("location:store.php}");
+			header("refresh:0");
       
         }
     }
-}else{
- 
 }
 
 
+
+
 ?>
+
+
+
+
+
+
 
 
     <!--=== Bootstrap CSS ===-->
@@ -96,7 +100,7 @@ background-color: #17A2B8;
 				<div class="input-group">
 
                     <form action="./Search.php" method="POST">
-				  <input type="text" name="serach_word" style="padding:20px;font-size:large" class="form-control" placeholder="Search Products">
+				  <input type="text" name="search_word" style="padding:20px;font-size:large" class="form-control" placeholder="Search Products">
 				  <div class="input-group-append">
 				    <button class="btn btn-info" type="submit" ><i class="fa fa-search"></i></button>
 				  </div>
@@ -166,7 +170,7 @@ background-color: #17A2B8;
                       ?>
 			
 			<span class="mr-md-auto" style="font-weight:900;font-size:large;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( <?php echo  $row["COUNT(product_id)"] ?>  )
-			 &nbsp;Items found on Women Category  </span>
+			 &nbsp;Items found on Men Category  </span>
 		
 		
 		</div>
@@ -206,7 +210,7 @@ if ($result = $conn->query($query) ) {
 			</div> <!-- img-wrap.// -->
 			<figcaption class="info-wrap">
 				<div class="fix-height">
-				<center>	<a  href="#" class="title"><?php echo $row["product_name"] ?></a></center>
+				<center>	<a  href="single_product.php?id=<?php echo $row['product_id'] ?>" class="title"><?php echo $row["product_name"] ?></a></center>
 					<div class="price-wrap mt-2">
 					<center>	<span class="price"><?php echo $row["price"] . ' JOD' ?></span></center>
 					
@@ -219,8 +223,7 @@ if ($result = $conn->query($query) ) {
                                             <input type="hidden" name="product_price" value="<?php echo $row["price"]; ?>">
                                      
 									<button  class="btn btn-block btn-dark btn-lg mt-4" name="add_item" type="submit">Add to cart </button></form>
-			</figcaption>
-		</figure>
+								</figcaption>
 	</div> <!-- col.// -->
 
 	<?php
@@ -246,15 +249,3 @@ if ($result = $conn->query($query) ) {
     include "./inc/footer.php"
      ?>
 
-
-
-<?php 
-
-// $key="";
-// if(isset( $_GET['serach_word'])){
-//   $key_word=  $_GET['serach_word'];
-// }
-// $query = "SELECT * FROM proudcts where product_name LIKE '%$key_word%'";
-// $conn->query($query);
-
-?>

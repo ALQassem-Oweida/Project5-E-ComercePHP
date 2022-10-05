@@ -1,5 +1,4 @@
 <?php
-// session_start();
 include "../lib/Databaseconfig.php";
 ?>
 
@@ -25,7 +24,7 @@ include "../lib/Databaseconfig.php";
                 <div class="card">
                     <div class="card-header">
                         <h4>Edit User
-                            <a href="Super.php" class="btn btn-info float-end">Go BACK</a>
+                            <a href="Admin_user_view.php" class="btn btn-info float-end">Go BACK</a>
                         </h4>
                     </div>
                     <div class="card-body">

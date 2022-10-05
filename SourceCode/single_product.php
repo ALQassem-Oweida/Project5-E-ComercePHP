@@ -3,14 +3,13 @@
 $id=$_GET['id'];
 
 if (isset($_POST["add_item"])) {
-    $ok = 1;
-    if ($ok == 1) {
+ 
         if (isset($_SESSION['cart'])) {
             $items = array_column($_SESSION["cart"], 'product_id');
           
             if (in_array($_POST['add_to_cart_id'], $items)) {
 				
-                // header("location:store.php?id={$_GET['id']}");
+                header("refresh:0");
              
             } else {
                 $item_array = array(
@@ -18,11 +17,11 @@ if (isset($_POST["add_item"])) {
                     'product_price' => $_POST['product_price'],
                     'product_name' => $_POST['product_name'],
                     'product_image' => $_POST['product_image'],
-					'quantity'=>1,
+					'quantity'=>$_POST['itemQuntety'],
                    
                 );
                 $_SESSION["cart"][$_POST['add_to_cart_id'] ] = $item_array;
-                // header("location:store.php");
+				header("refresh:0");
       
             }
         } else {
@@ -31,19 +30,21 @@ if (isset($_POST["add_item"])) {
                 'product_price' => $_POST['product_price'],
                 'product_name' => $_POST['product_name'],
                 'product_image' => $_POST['product_image'],
-				$quantity=$_POST['qty'],
-				'quantity'=>1,
+                'quantity'=>$_POST['qty'],
+
                
             );
             $_SESSION["cart"][$_POST['add_to_cart_id'] ] = $item_array;
-            // header("location:store.php}");
+            header("refresh:0");
+	
       
         }
     }
-}else{
- 
-}
 
+
+			
+                   
+         
 
 ?>
 
@@ -52,32 +53,7 @@ if (isset($_POST["add_item"])) {
 <html class="no-js" lang="zxx">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="meta description">
-
-    <title>Single Product Page</title>
-
-    <!--=== Favicon ===-->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
-
-    <!--== Google Fonts ==-->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" />
-
-    <!--=== Bootstrap CSS ===-->
-    <link href="assets/css/vendor/bootstrap.min.css" rel="stylesheet">
-    <!--=== Font-Awesome CSS ===-->
-    <link href="assets/css/vendor/font-awesome.css" rel="stylesheet">
-    <!--=== Plugins CSS ===-->
-    <link href="assets/css/plugins.css" rel="stylesheet">
-    <!--=== Main Style CSS ===-->
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- Modernizer JS -->
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+  
 
 
 <style>
@@ -131,14 +107,19 @@ if ($result = $conn->query($query) ) {
                                     <h2><a href="single-product.html"><?php echo $row["product_name"] ?></a></h2>
 
 
+                                    <label for="qty">Available in Stock : (<?php echo $row["stock"] ?>) </label><br>
+
+
                                     <span class="price"><?php echo $row["price"] ?> JOD</span>
                                     <p class="products-desc"><?php echo $row["description"] ?></p>
                                     <p class="products-desc">( <?php echo $row["stock"] ?> ) Pieces available</p>
                                     <form method="POST" action="">
                                     <div class="product-quantity d-flex align-items-center">
-                                        <div class="quantity-field">
-                                            <label for="qty">Qty</label>
-                                            <input name="qty" type="number" id="qty" min="1" max="<?php echo $row["stock"] ?>" value="   " />
+                                        
+                                        <div class="quantity-field"> 
+                                                 
+                                            <label for="qty">Qty </label>
+                                            <input name="itemQuntety" type="number" id="qty" min="1" max="<?php echo $row["stock"] ?>" value="1" />
                                         </div>
 								        	<input type="hidden" name="add_to_cart_id" value="<?php echo $row['product_id']; ?>">
                                             <input type="hidden" name="product_name" value="<?php echo $row['product_name']; ?>">
@@ -178,6 +159,8 @@ $conn->query($query);
 if ($result = $conn->query($query) ) {
     while ($row = $result->fetch_assoc() ) { 
        $row["COUNT(productID)"];
+
+
         ?>
 
 
@@ -225,11 +208,28 @@ if ($result = $conn->query($query) ) {
 
                                              <!-- comment adding reviewes  -->
 
+                                             <?php if(!isset($_SESSION['email'])){
+
+echo "<h3 style='color:red'>Plese Sign in to add a comment</h3>";
+                                             }
+                                                ?>
+                                             
+<?php if(isset($_SESSION['id'])){
+    if(isset($_POST['save'])){
+$user_comment=$_POST['review'];
+$user_id=$_SESSION['id'];
+$id=$_GET['id'];
+$query="INSERT INTO reviews(productID,customersID,review)
+values ($id,$user_id,$user_comment) ";
+$conn->query($query);
+    }
 
 
+
+?>
                                                     <div class="ratting-form-wrapper fix">
                                                         <h3>Add your Comments</h3>
-                                                        <form action="code.php" method="POST" enctype="multipart/form-data">
+                                                        <form action="" method="POST" enctype="multipart/form-data">
                                                             <div class="ratting-form row">
                                                                 <div class="col-12 mb-4">
                                                                     <h5>Rating:</h5>
@@ -237,15 +237,15 @@ if ($result = $conn->query($query) ) {
                                                                 </div>
                                                                 <div class="col-md-6 col-12 mb-4">
                                                                     <label for="name">Name:</label>
-                                                                    <input name="name" id="name" placeholder="Name" type="text">
+                                                                    <input name="name" id="name" placeholder="Name" type="text" value="<?php echo  $_SESSION['firstname'] ?>">
                                                                 </div>
                                                                 <div class="col-md-6 col-12 mb-4">
                                                                     <label for="email">Email:</label>
-                                                                    <input name="email" id="email" placeholder="Email" type="text">
+                                                                    <input name="email" id="email" placeholder="Email" type="text" value="<?php echo  $_SESSION['email'] ?>">
                                                                 </div>
                                                                 <div class="col-12 mb-4">
                                                                     <label for="your-review">Your Review:</label>
-                                                                    <textarea name="review" id="your-review" placeholder="Write a review"></textarea>
+                                                                    <textarea name="review" id="your-review" placeholder="Write a review" ></textarea>
                                                                 </div>
                                                                 <div class="col-12">
                                                                     <!-- <button type="submit" name="save" class="btn btn-primary">Save </button> -->
@@ -254,6 +254,9 @@ if ($result = $conn->query($query) ) {
                                                             </div>
                                                         </form>
                                                     </div>
+
+<?php } ?>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -273,22 +276,22 @@ if ($result = $conn->query($query) ) {
     <!--== Page Content Wrapper End ==-->
 
 
+<!--=======================Javascript============================-->
+<!--=== Jquery Min Js ===-->
+<script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
+<!--=== Jquery Migrate Min Js ===-->
+<script src="assets/js/vendor/jquery-migrate-1.4.1.min.js"></script>
+<!--=== Popper Min Js ===-->
+<script src="assets/js/vendor/popper.min.js"></script>
+<!--=== Bootstrap Min Js ===-->
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+<!--=== Plugins Min Js ===-->
+<script src="assets/js/plugins.js"></script>
+
+<!--=== Active Js ===-->
+<script src="assets/js/active.js"></script>
 
 
-    <!--=======================Javascript============================-->
-    <!--=== Jquery Min Js ===-->
-    <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
-    <!--=== Jquery Migrate Min Js ===-->
-    <script src="assets/js/vendor/jquery-migrate-1.4.1.min.js"></script>
-    <!--=== Popper Min Js ===-->
-    <script src="assets/js/vendor/popper.min.js"></script>
-    <!--=== Bootstrap Min Js ===-->
-    <script src="assets/js/vendor/bootstrap.min.js"></script>
-    <!--=== Plugins Min Js ===-->
-    <script src="assets/js/plugins.js"></script>
-
-    <!--=== Active Js ===-->
-    <script src="assets/js/active.js"></script>
 </body>
 
 </html>

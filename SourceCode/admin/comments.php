@@ -1,5 +1,4 @@
-﻿<?php include 'inc/header.php';?>
-<?php include 'inc/sidebar.php';?>
+﻿
 <?php include "../lib/Databaseconfig.php";
 
 
@@ -31,7 +30,7 @@
 
 	$query ="select users.first_name , reviews.id, reviews.productID,reviews.customersID,reviews.id,reviews.review,reviews.approval,proudcts.product_id , proudcts.product_name from users
 	join reviews on reviews.customersID  = users.user_id
-	join proudcts on reviews.productID= proudcts.product_id
+	join proudcts on reviews.productID= proudcts.product_id WHERE approval=0
 	";
 
 $conn->query($query);
@@ -73,7 +72,11 @@ if (isset($_GET['approve_comment'])){
         $approval= mysqli_real_escape_string($conn,$_GET['approve_comment'] );
         $query = "UPDATE reviews SET approval=1 WHERE id='$approval' ";
         $query_run = mysqli_query($conn, $query);
-
+		if( $query_run = mysqli_query($conn, $query)){
+			echo "<script>
+			alert('Comment approved successfully');
+			window.location.href='http://localhost/01%20Team%203/admin/dashboard.php?comments';
+			</script>";}
       
 
 }
@@ -84,12 +87,4 @@ if (isset($_GET['approve_comment'])){
 
 
 
-
-<!-- <script type="text/javascript">
-    $(document).ready(function () {
-        setupLeftMenu();
-        $('.datatable').dataTable();
-		setSidebarHeight();
-    });
-</script> -->
 

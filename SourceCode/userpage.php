@@ -117,11 +117,10 @@ if ($result = $conn->query($query) ) {
                 <div class="card-header bg-dark text-light">Profile Picture</div>
                 <div class="card-body text-center">
                     <!-- Profile picture image-->
-                    <img class="img-account-profile rounded-circle mb-2" style="width:25% ; height:25%" src="./admin/upload/user_img2.png" alt="">
+                    <img class="img-account-profile rounded-circle mb-2" style="width:25% ; height:25%" src="./admin/upload/user.png" alt="">
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">User image</div>
-                    <!-- Profile picture upload button-->
-                    <button class="btn btn-secondary" type="button">Upload new image</button>
+             
                     <a href="./logout.php" class="btn btn-success mr-5  ">Log Out</a>
                     <a href="./index.php" class="btn btn-info ">Home</a>
 

@@ -1,18 +1,19 @@
 <?php include "./inc/hedare.php" ?>
 <?php 
 
+if(isset($_GET['action']) && isset($_GET['order_number'])) {
+	$message="Your order number ".$_GET['order_number']." has been placed successfully";
 
+	echo "<script> alert('$message') </script>";
+}
 
 if (isset($_POST["add_item"])) {
     $ok = 1;
     if ($ok == 1) {
         if (isset($_SESSION['cart'])) {
             $items = array_column($_SESSION["cart"], 'product_id');
-          
+			header("refresh:0");
             if (in_array($_POST['add_to_cart_id'], $items)) {
-				
-                // header("location:store.php?id={$_GET['id']}");
-             
             } else {
                 $item_array = array(
                     'product_id' => $_POST['add_to_cart_id'],
@@ -23,7 +24,7 @@ if (isset($_POST["add_item"])) {
                    
                 );
                 $_SESSION["cart"][$_POST['add_to_cart_id'] ] = $item_array;
-                // header("location:store.php");
+				header("refresh:0");
       
             }
         } else {
@@ -37,14 +38,11 @@ if (isset($_POST["add_item"])) {
                
             );
             $_SESSION["cart"][$_POST['add_to_cart_id'] ] = $item_array;
-            // header("location:store.php}");
+			header("refresh:0");
       
         }
     }
-}else{
- 
 }
-
 
 ?>
 
@@ -99,7 +97,7 @@ if (isset($_POST["add_item"])) {
 								<div class="input-group">
 
 
-									<input type="text" name="serach_word" style="padding:20px;font-size:large" class="form-control" placeholder="Search Products">
+									<input type="text" name="search_word" style="padding:20px;font-size:large" class="form-control" placeholder="Search Products">
 									<div class="input-group-append">
 										<button class="btn btn-info" type="submit"><i class="fa fa-search"></i></button>
 									</div>

@@ -1,7 +1,7 @@
-<?php include "./lib/Databaseconfig.php"; 
+<?php include "./lib/Databaseconfig.php";
 session_start();
 if (isset($_SESSION['cart'])) {
-$counter=count($_SESSION['cart']);
+    $counter = count($_SESSION['cart']);
 }
 ?>
 <!DOCTYPE html>
@@ -61,16 +61,16 @@ $counter=count($_SESSION['cart']);
                                 <li><a href="all.php"> Shop</a></li>
                                 <li><a href="./Men.php">Men</a></li>
                                 <li><a href="./Women.php">Women </a></li>
-                                <li><a href="./conctus.php">Contact Us</a></li>
-                           
-                                
+                                <!-- <li><a href="./conctus.php">Contact Us</a></li> -->
+
+
                                 <?php if (!isset($_SESSION['firstname'])) { ?>
-                                    <li><a href="./SignUp.php"><i class="fa fa-user-o"></i>&nbsp; Sign Up </a></li>
+                                    <li><a href="http://127.0.0.1/online-shopping/registration.php"><i class="fa fa-user-o"></i>&nbsp; Sign Up </a></li>
                                     <li><a href="./Login_form.php"><i class="fa fa-user-o"></i>&nbsp; Login </a></li>
 
                                 <?php } else {
                                     $id = $_SESSION['id']; ?>
-                                    <li style="color:#D8C35D ;">||&nbsp; Welcome,<?php echo $_SESSION['firstname']?>&nbsp;||</li>
+                                    <li style="color:#D8C35D ;">||&nbsp; Welcome,<?php echo $_SESSION['firstname'] ?>&nbsp;||</li>
                                     <li><a href="./userpage.php"><i class="fa fa-user-o"></i>&nbsp;&nbsp; My Account</a></li>
                                     <li><a href="./logout.php"><i class="fa fa-user-o"></i>&nbsp;&nbsp; Logout</a></li>
                                 <?php } ?>
@@ -86,14 +86,15 @@ $counter=count($_SESSION['cart']);
                 <!-- Header cart Start -->
                 <div class="col-6 col-lg-2 m-auto">
                     <div class="header-right-meta text-right">
-                        <ul><li class="shop-cart"><a href="./cart.php"><i class="fa fa-shopping-bag"></i> <span class="count"><?php echo $counter ?></span></a>
-                            </div>
+                        <ul>
+                            <li class="shop-cart"><a href="./cart.php"><i class="fa fa-shopping-bag"></i> <span class="count"><?php echo $counter ?></span></a>
                     </div>
-                    </li>
-                    </ul>
                 </div>
+                </li>
+                </ul>
             </div>
-            <!-- Header cart End -->
+        </div>
+        <!-- Header cart End -->
         </div>
         </div>
     </header>

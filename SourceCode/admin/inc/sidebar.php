@@ -4,7 +4,7 @@
             <ul class="section menu text-start" style="padding-left:0px ;">
             <li><a >User Option</a>
                     <ul >
-                        <li><a style="text-decoration:none ;" href="Super.php">Edite users</a> </li>
+                        <li><a style="text-decoration:none ;" href="Admin_user_view.php">Edite users</a> </li>
                     </ul>
                 </li>
                 

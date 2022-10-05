@@ -31,7 +31,7 @@ class Session
         }
     }
 
-    public static function checkSession()
+    public static function checkAdminSession()
     {
         self::init();
         if (self::get("adminlogin") == false) {
@@ -52,5 +52,12 @@ class Session
     {
         session_destroy();
         header("Location:login.php");
+    }
+
+
+    public static function isUserLoggedIn()
+    {
+        self::init();
+        return self::get("userlogin");
     }
 }

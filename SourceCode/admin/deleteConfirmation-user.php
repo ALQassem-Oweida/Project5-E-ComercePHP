@@ -18,7 +18,7 @@ if(isset($_POST["id"])){
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Records deleted successfully. Redirect to landing page
-            header("location: Super.php");
+            header("location: http://localhost/01%20Team%203/admin/dashboard.php?Admin_user_view.php");
             exit();
         } else{
             echo "Oops! Something went wrong. Please try again later.";
@@ -65,7 +65,7 @@ if(isset($_POST["id"])){
                             <p>Are you sure you want to delete this User record?</p>
                             <p>
                                 <input type="submit" value="Yes" class="btn btn-danger">
-                                <a href="./Super.php" class="btn btn-secondary">No</a>
+                                <a href="http://localhost/01%20Team%203/admin/dashboard.php?Admin_user_view" class="btn btn-secondary">No</a>
                             </p>
                         </div>
                     </form>

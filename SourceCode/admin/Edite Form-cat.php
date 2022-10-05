@@ -85,7 +85,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $query = "UPDATE category SET category_name='$name' WHERE category_id='$cat_id' ";
         $query_run = mysqli_query($conn, $query);
-        header("Location: catlist.php");
+        echo "<script>
+        alert('category name updated successfully');
+        window.location.href='http://localhost/01%20Team%203/admin/dashboard.php?catlist';
+        </script>";
       
 
 }

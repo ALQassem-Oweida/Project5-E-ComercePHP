@@ -2,9 +2,6 @@
 
 $sum=0;
 
-
-
-
 if (isset($_GET['del'])) {
     $del = $_GET['del'];
     if (isset($_SESSION['cart'])) {
@@ -17,28 +14,14 @@ if (isset($_GET['del'])) {
     }}
 
   
-        if (isset($_SESSION['cart'])) {
-            if (isset($_POST['update'])) {
-                foreach ($_SESSION['cart'] as $keys => $value) {
-                  $ids= $_POST['id'];
-                    foreach ($_POST as $key => $value) {
-                        if (isset($_POST['quantity'])) {
-
-                            $_SESSION['cart'][$ids]['quantity'] = $_POST['quantity'];
-                            // header("location:view_cart.php");
-                        }
-                    }
-                }
-            }
-
-            }
+    
 
 ?>
 
 
 <body>
 
-    <br><br><br><br><br>
+    <br><br><br>
 
 
 
@@ -49,11 +32,7 @@ if (isset($_GET['del'])) {
                 <div class="col-12 text-center">
                     <div class="page-title-content">
                         <h1>Shopping Cart</h1>
-                        <!-- <ul class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop-left-full-wide.html">Shop</a></li>
-                        <li><a href="cart.html" class="active">Cart</a></li>
-                    </ul> -->
+           
                     </div>
                 </div>
             </div>
@@ -87,6 +66,7 @@ if (isset($_GET['del'])) {
                                     $sum=0;
                                 foreach ($_SESSION['cart'] as $key => $value) { 
                                     $sum+= ($value['product_price']* $value['quantity']);
+                                    $_SESSION['sum_order'] =$sum ;
                                 ?>
 
                                             <tr>
@@ -110,12 +90,7 @@ if (isset($_GET['del'])) {
                     <!-- Cart Update Option -->
                     <div class="cart-update-option d-block d-lg-flex">
 
-                        <div class="apply-coupon-wrapper">
-                            <form action="#" method="post" class=" d-block d-md-flex">
-                                <input type="text" placeholder="Enter Your Coupon Code" />
-                                <button class="btn-add-to-cart">Apply Coupon</button>
-                            </form>
-                        </div>
+                    
                        
                     </div>
                 </div>
@@ -148,7 +123,7 @@ if (isset($_GET['del'])) {
 
 
                         
-                                <form action="./checkout.php" method="post"><button class="btn-add-to-cart" type="submit" name="chechout">Proceed To Checkout</button></form>
+                                <a href="./checkout.php" class="btn-add-to-cart" >Proceed To Checkout</a>
                     </div>
                 </div>
             </div>
