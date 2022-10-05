@@ -75,7 +75,7 @@ if (isset($_GET['approve_comment'])){
 		if( $query_run = mysqli_query($conn, $query)){
 			echo "<script>
 			alert('Comment approved successfully');
-			window.location.href='http://localhost/01%20Team%203/admin/dashboard.php?comments';
+			window.location.href='http://localhost/online-shopping/admin/dashboard.php?comments';
 			</script>";}
       
 

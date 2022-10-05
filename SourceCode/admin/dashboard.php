@@ -39,7 +39,7 @@ if(!isset( $_SESSION['email'])){
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Oreders</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
-                    <a href="http://localhost/01%20Team%203/admin/dashboard.php?inbox">Inbox</a>
+                    <a href="http://localhost/online-shopping/admin/dashboard.php?inbox">Inbox</a>
                 </li>
               </ul>
 	          </li>
@@ -54,10 +54,10 @@ if(!isset( $_SESSION['email'])){
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Category Option</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
-                    <a href="http://localhost/01%20Team%203/admin/dashboard.php?catadd">Add Category</a>
+                    <a href="http://localhost/online-shopping/admin/dashboard.php?catadd">Add Category</a>
                 </li>
                 <li>
-                    <a href="http://localhost/01%20Team%203/admin/dashboard.php?catlist">Category List</a>
+                    <a href="http://localhost/online-shopping/admin/dashboard.php?catlist">Category List</a>
                 </li>
            
               </ul>
@@ -69,10 +69,10 @@ if(!isset( $_SESSION['email'])){
               <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Product Option</a>
               <ul class="collapse list-unstyled" id="pageSubmenu2">
                 <li>
-                    <a href="http://localhost/01%20Team%203/admin/dashboard.php?insert_product">Add Product</a>
+                    <a href="http://localhost/online-shopping/admin/dashboard.php?insert_product">Add Product</a>
                 </li>
                 <li>
-                    <a href="http://localhost/01%20Team%203/admin/dashboard.php?productlist">Product List</a>
+                    <a href="http://localhost/online-shopping/admin/dashboard.php?productlist">Product List</a>
                 </li>
               
               </ul>
@@ -85,10 +85,10 @@ if(!isset( $_SESSION['email'])){
               <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Comments</a>
               <ul class="collapse list-unstyled" id="pageSubmenu3">
                 <li>
-                    <a href="http://localhost/01%20Team%203/admin/dashboard.php?comments">Comments list</a>
+                    <a href="http://localhost/online-shopping/admin/dashboard.php?comments">Comments list</a>
                 </li>
                 <li>
-                    <!-- <a href="http://localhost/01%20Team%203/admin/index.php?">Product List</a> -->
+                    <!-- <a href="http://localhost/online-shopping/admin/index.php?">Product List</a> -->
                 </li>
               
               </ul>
@@ -105,7 +105,7 @@ if(!isset( $_SESSION['email'])){
               
 	            <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                    <a href="http://localhost/01%20Team%203/admin/dashboard.php?Admin_user_view">Edite users</a>
+                    <a href="http://localhost/online-shopping/admin/dashboard.php?Admin_user_view">Edite users</a>
                 </li>
       
 	            </ul>

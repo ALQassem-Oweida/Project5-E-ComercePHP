@@ -9,7 +9,7 @@
 
 <?php
 
-    $query ="SELECT * FROM users " ;
+    $query ="SELECT * FROM users where user_type='user' " ;
 
 
 echo '

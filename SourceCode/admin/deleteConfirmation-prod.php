@@ -18,7 +18,7 @@ if(isset($_POST["id"])){
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Records deleted successfully. Redirect to landing page
-            header("location: http://localhost/01%20Team%203/admin/dashboard.php?productlist");
+            header("location: http://localhost/online-shopping/admin/dashboard.php?productlist");
             exit();
         } else{
             echo "Oops! Something went wrong. Please try again later.";

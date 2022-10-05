@@ -16,7 +16,7 @@
                 if( $query_run = mysqli_query($conn, $query)){
                     echo "<script>
                     alert('New category add successfully');
-                    window.location.href='http://localhost/01%20Team%203/admin/dashboard.php?catadd';
+                    window.location.href='http://localhost/online-shopping/admin/dashboard.php?catadd';
                     </script>";}
               
             }

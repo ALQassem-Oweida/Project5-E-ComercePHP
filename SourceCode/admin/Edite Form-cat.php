@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query_run = mysqli_query($conn, $query);
         echo "<script>
         alert('category name updated successfully');
-        window.location.href='http://localhost/01%20Team%203/admin/dashboard.php?catlist';
+        window.location.href='http://localhost/online-shopping/admin/dashboard.php?catlist';
         </script>";
       
 

@@ -24,7 +24,7 @@ include "../lib/Databaseconfig.php";
                 <div class="card">
                     <div class="card-header">
                         <h4>Edit User
-                            <a href="Admin_user_view.php" class="btn btn-info float-end">Go BACK</a>
+                            <a href="http://localhost/online-shopping/admin/dashboard.php?dashboard" class="btn btn-info float-end">Go BACK</a>
                         </h4>
                     </div>
                     <div class="card-body">

@@ -260,7 +260,7 @@ if($run_product){
 
 echo "<script>
 alert('Product has been inserted successfully');
-window.location.href='http://localhost/01%20Team%203/admin/dashboard.php?insert_product';
+window.location.href='http://localhost/online-shopping/admin/dashboard.php?insert_product';
 </script>";
 
 
